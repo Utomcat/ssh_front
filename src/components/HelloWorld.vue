@@ -1,15 +1,10 @@
 <template>
   <div class="hello">
+  <img id="logo" src="@/assets/logo.png" alt="logo">
     <h1>{{ msg }}</h1>
     <ul>
       <li>
         <el-link @click="jumpCompanyMemberList()" type="primary">公司人员信息列表</el-link>
-      </li>
-      <li>
-        <el-link type="primary">公司人员查询</el-link>
-      </li>
-      <li>
-        <el-link type="primary">公司人员信息修改</el-link>
       </li>
       <li>
         <el-link type="primary">二维码信息检查</el-link>

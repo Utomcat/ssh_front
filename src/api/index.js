@@ -3,15 +3,31 @@ import config from '@/api/config'
 import {baseUrl} from "@/utils/global"
 
 
-export function getCompanyAll() {
+export function getCompanyAll(param) {
   return dealPromise({
-    url: 'company/getCompanyAll',
-    method: 'get'
+    url: 'company/queryAllMember',
+    method: 'post',
+    data: param
   })
 }
 
-function dealPromise(promise) {
+export function updateCompanyStatus(param){
+  return dealPromise({
+    url: 'company/updateMemberStatus',
+    method: 'post',
+    data: param
+  })
+}
 
+
+
+/**
+ * 处理请求
+ *
+ * @param promise 请求参数, url、请求方式、请求参数等
+ * @returns {Promise<unknown>} 返回封装的 Promise 对象
+ */
+function dealPromise(promise) {
   return new Promise((resolve, reject) => {
     const request = axios.create({
       baseURL: config.baseUrl,
@@ -19,7 +35,6 @@ function dealPromise(promise) {
       timeout: config.timeout,
       withCredentials: config.withCredentials
     })
-
     // 请求处理
     request(promise).then(res => {
       resolve(res.data)
