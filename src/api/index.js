@@ -20,6 +20,15 @@ export function updateCompanyStatus(param){
 }
 
 
+export function updateCompanyInfo(param){
+  return dealPromise({
+    url: 'company/update',
+    method: 'post',
+    data: param
+  })
+}
+
+
 
 /**
  * 处理请求
