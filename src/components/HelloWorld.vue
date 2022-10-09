@@ -7,7 +7,7 @@
         <el-link @click="jumpCompanyMemberList()" type="primary">公司人员信息列表</el-link>
       </li>
       <li>
-        <el-link type="primary">二维码信息检查</el-link>
+        <el-link @click="jumpQrCodePage()" type="primary">二维码信息检查</el-link>
       </li>
     </ul>
   </div>
@@ -24,6 +24,9 @@ export default {
   methods:{
     jumpCompanyMemberList(){
       this.$router.push('/CompanyMemberList')
+    },
+    jumpQrCodePage(){
+      this.$router.push('/GoToQrCodePage')
     }
   }
 }

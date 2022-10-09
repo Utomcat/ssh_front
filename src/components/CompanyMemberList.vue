@@ -1,8 +1,8 @@
 <template>
   <div>
-    <el-page-header @back="returnHelloWorld" content="公司人员信息列表">
+    <el-page-header @back="returnHelloWorld" content="公司人员信息列表" style="margin-top: -2%">
     </el-page-header>
-    <table style="height: 20%;width: 100%">
+    <table style="height: 20%;width: 100%; padding-top: 1%;">
       <tr>
         <td><i class="el-icon-key">数据ID</i></td>
         <td>
@@ -63,7 +63,8 @@
         </td>
         <td colspan="2">
           <el-button type="primary" icon="el-icon-search" @click="search">搜索</el-button>
-          <el-button native-type="reset" icon="el-icon-refresh-left" @click="reset">重置条件</el-button>
+          <el-button native-type="reset" icon="el-icon-refresh-left" @click="reset" style="margin-left: 3%">重置条件
+          </el-button>
         </td>
       </tr>
     </table>
@@ -71,12 +72,11 @@
     <el-table
       :data="tableData"
       border
-      height="774px"
-      style="width: 100%;">
+      style="width: 100%;height: 80%;margin-top: 2%">
       <el-table-column
         prop="id"
         label="ID"
-        width="50">
+        width="50" v-if="false">
       </el-table-column>
       <el-table-column
         prop="name"
@@ -143,20 +143,20 @@
 
     <el-dialog title="更新人员信息" :visible.sync="dialogFormVisible">
       <el-form :model="form">
-        <el-form-item label="ID" :label-width="formLabelWidth" prop="id" required>
+        <el-form-item label="ID" :label-width="formLabelWidth" prop="id" required v-if="false">
           <el-input :disabled="true" v-model="form.id" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="姓名" :label-width="formLabelWidth">
-          <el-input v-model="form.name" autocomplete="off"></el-input>
+          <el-input v-model="form.name" autocomplete="off" style="width: 20%;margin-left: -80%"></el-input>
         </el-form-item>
         <el-form-item label="电话" :label-width="formLabelWidth">
-          <el-input v-model="form.phone" autocomplete="off"></el-input>
+          <el-input v-model="form.phone" autocomplete="off" style="width: 20%;margin-left: -80%"></el-input>
         </el-form-item>
         <el-form-item label="邮箱" :label-width="formLabelWidth">
-          <el-input v-model="form.email" autocomplete="off"></el-input>
+          <el-input v-model="form.email" autocomplete="off" style="width: 20%;margin-left: -80%"></el-input>
         </el-form-item>
         <el-form-item label="所属组别" :label-width="formLabelWidth">
-          <el-select v-model="form.group" placeholder="请选择">
+          <el-select v-model="form.group" placeholder="请选择" style="width: 20%;margin-left: -80%">
             <el-option
               v-for="item in groups"
               :key="item.value"
@@ -175,7 +175,7 @@
           </el-checkbox-group>
         </el-form-item>
         <el-form-item label="在职状态" :label-width="formLabelWidth">
-          <el-select v-model="form.onTheJob" placeholder="请选择">
+          <el-select v-model="form.onTheJob" placeholder="请选择" style="width: 20%;margin-left: -80%">
             <el-option
               v-for="item in onTheJobs"
               :key="item.value"
@@ -185,7 +185,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="住址" :label-width="formLabelWidth">
-          <el-input v-model="form.address" autocomplete="off"></el-input>
+          <el-input v-model="form.address" autocomplete="off" style="width: 60%;margin-left: -40%"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -249,7 +249,7 @@ export default {
           value: 6,
           label: '六组'
         }
-        ],
+      ],
       // 岗位下拉选值
       positions: [
         {value: 0, label: '项目经理'},
@@ -276,7 +276,7 @@ export default {
         address: ''
       },
       // 表格每项的label宽度
-      formLabelWidth: '50px',
+      formLabelWidth: '80px',
       // 全选选项是否选中
       checkAll: false,
       //
@@ -284,10 +284,10 @@ export default {
       // 定义验证规则
       rule: {
         id: [
-          { required: true, message: '请输ID', trigger: 'blur' }
+          {required: true, message: '请输ID', trigger: 'blur'}
         ],
         name: [
-          { required: true, message: '请输入姓名', trigger: 'blur' }
+          {required: true, message: '请输入姓名', trigger: 'blur'}
         ],
 
       }
@@ -477,7 +477,7 @@ export default {
       this.form.id = row.id;
       this.form.name = row.name;
       this.form.phone = row.phone;
-      this.form.email = row.email;
+      this.form.email = row.email === '1' ? '' : row.email;
       this.form.group = row.group;
       this.form.onTheJob = row.onTheJob;
       row.position.split(",").forEach(item => {
