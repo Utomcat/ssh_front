@@ -28,6 +28,13 @@ export function updateCompanyInfo(param){
   })
 }
 
+export function checkQrInfo(param){
+  return dealPromise({
+    url: 'company/qrCode',
+    method: 'post',
+    data: param
+  })
+}
 
 
 /**

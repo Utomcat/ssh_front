@@ -9,6 +9,9 @@
       <li>
         <el-link @click="jumpQrCodePage()" type="primary">二维码信息检查</el-link>
       </li>
+      <li>
+        <el-link @click="jumpExcelCheckPage()" type="primary">excel信息检查</el-link>
+      </li>
     </ul>
   </div>
 </template>
@@ -27,6 +30,9 @@ export default {
     },
     jumpQrCodePage(){
       this.$router.push('/GoToQrCodePage')
+    },
+    jumpExcelCheckPage(){
+      this.$router.push('/GoToExcelCheckPage')
     }
   }
 }
